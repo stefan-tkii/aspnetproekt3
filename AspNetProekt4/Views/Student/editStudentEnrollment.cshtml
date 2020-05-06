@@ -1,0 +1,113 @@
+﻿@model AspNetProekt3.ViewModels.EnrollmentViewModel
+@{
+    ViewData["Title"] = "editStudentEnrollment";
+}
+
+<h3>editStudentEnrollment</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.Indeks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Semester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExamPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeminalPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinishDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectUrl)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Student.Indeks)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Grade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.ExamPoints)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.SeminalPoints)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.AdditionalPoints)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.FinishDate)
+                </td>
+                <td>
+                   <a href="@Model.ProjectUrl"> @Html.DisplayFor(modelItem => Model.ProjectUrl) </a>
+                </td>
+            </tr>
+    </tbody>
+</table>
+<br />
+
+<form asp-controller="Student" asp-action="changeUrl" asp-route-id="@Model.Id" method="post">
+    <div class="form-actions no-color">
+        <p>
+            Enter the link to the project url: <input type="text" name="url" placeholder="Project URL" />
+            <input type="submit" value="Save changes" class="btn btn-default" />
+        </p>
+    </div>
+</form>
+
+<br />
+
+<form enctype="multipart/form-data" asp-controller="Student" asp-action="uploadProject" asp-route-id="@Model.Id" method="post">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Upload file: </label>
+        <div class="col-sm-10">
+            <div class="custom-file">
+                <input type="file" name="uploadedFile" class="form-control custom-file-input" />
+                <label class="custom-file-label"></label>
+            </div>
+        </div>
+        <br />
+        <input type="submit" value="Save changes" class="btn btn-default" />
+    </div>
+    @section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var filename = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(filename);
+            });
+        });
+    </script>
+    }
+</form>
+
+
+
+
+

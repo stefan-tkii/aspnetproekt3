@@ -1,0 +1,88 @@
+﻿@model AspNetProekt3.Models.Enrollment
+@{
+    ViewData["Title"] = "studentEnrollment";
+}
+
+<h3>Details for current enrollment</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Current ID:
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.Indeks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Semester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExamPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeminalPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinishDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.CourseId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.Student.Indeks)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.Grade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.Semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.ExamPoints)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.SeminalPoints)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem =>modelItem.AdditionalPoints)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.FinishDate)
+                </td>
+            </tr>
+    </tbody>
+</table>
+<br />
+
+<form asp-controller="Teacher" asp-action="updateEnrollment" asp-route-id="@Model.Id" method="post">
+    <div class="form-actions no-color">
+        <p>
+            Enter exam points: <input type="text" name="examPoints" placeholder="Exam points" /> <br />
+            Enter additional points: <input type="text" name="additionalPoints" placeholder="Additional points" /> <br />
+            Enter seminal points: <input type="text" name="seminalPoints" placeholder="Seminal points"/> <br />
+            Enter grade: <input type="text" name="grade" placeholder="Course grade"/> <br />
+            Enter finish date in format dd//mm//yyyy: <input type="text" name="finishDate" placeholder="dd/mm/yyy"/> <br />
+            <input type="submit" value="Save changes" class="btn btn-default" />
+        </p>
+    </div>
+</form>
+
+
+

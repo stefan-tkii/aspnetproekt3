@@ -1,0 +1,100 @@
+﻿@model IEnumerable<AspNetProekt3.Models.Enrollment>
+@{
+    ViewData["Title"] = "ViewEnrollments";
+}
+
+<h3>Enrollments from last year for selected course: </h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Current ID: 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.Indeks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Semester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExamPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeminalPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model=>model.FinishDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem=>item.CourseId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.Indeks)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExamPoints)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeminalPoints)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdditionalPoints)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem=> item.FinishDate)
+                </td>
+                <td>
+                    <a asp-action="studentEnrollment" asp-route-id="@item.Id">Edit enrollment</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+
+<form asp-controller="Teacher" asp-action="viewEnrollmentsByYear" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Choose one of the selected option to filter by: <br />
+            <input type="radio" id="1" name="searchBy" value="0 years" />
+            <label for="1">0 years</label> <br />
+            <input type="radio" id="2" name="searchBy" value="1 years" />
+            <label for="2">1 years</label> <br />
+            <input type="radio" id="3" name="searchBy" value="2 years" />
+            <label for="3">2 years</label> <br />
+            <input type="radio" id="4" name="searchBy" value="3 years" />
+            <label for="4">3 years</label> <br />
+
+            Enter current ID of the course displayed in the table: <input type="text" name="id" placeholder="Current course id" /> <br />
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+</form>
+

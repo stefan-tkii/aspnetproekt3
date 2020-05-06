@@ -1,0 +1,70 @@
+﻿@model AspNetProekt3.Models.addMenuModel
+@{
+    ViewData["Title"] = "addMenu";
+}
+
+<head>
+   <link href="C:\Users\stefa\source\repos\AspNetProekt3\Views\Student\StyleSheet.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<h3>Add menu</h3>
+
+<p>Select one course and one student from each of the corresponding drop down menus and click enroll to enroll selected student with selected course.</p>
+
+<div class="contents">
+    <table class="table1">
+        <thead>
+            <tr>
+                <th>First name: </th>
+                <th>Last name: </th>
+                <th>Index: </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.selectedStudents)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Indeks)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <table class="table2">
+        <thead>
+            <tr>
+                <th>Title: </th>
+                <th>Semester: </th>
+                <th>Programme: </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model.selectedCourses)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem=> item.Title)</td>
+                    <td>@Html.DisplayFor(modelItem=> item.Semester)</td>
+                    <td>@Html.DisplayFor(modelItem=>item.Programme)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<br />
+<p>Enter the index of a student and the title of a course in order to enroll that student to the selected course: </p>
+
+<form asp-controller="Student" asp-action="EnrollStudent" method="post">
+    <div class="form-actions no-color">
+        <p>
+            Enter the indeks number of the student: <input type="text" name="indeks" placeholder="Student's indeks" />
+            Enter the title of the course: <input type="text" name="title" placeholder="Course title" />
+            <input type="submit" value="Enroll" class="btn btn-default" />
+        </p>
+    </div>
+
+</form>
+

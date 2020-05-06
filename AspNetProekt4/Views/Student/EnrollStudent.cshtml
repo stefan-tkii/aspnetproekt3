@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AspNetProekt3.Models.Enrollment>
+   @{ 
+       ViewData["Title"] = "EnrollStudent";
+    }
+
+<h3>Current enrollment list</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.course.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.course.Semester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.Indeks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.course.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.course.Semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Student.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Student.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Student.Indeks)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Year)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

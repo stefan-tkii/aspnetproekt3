@@ -1,0 +1,88 @@
+﻿@model IEnumerable<AspNetProekt3.Models.Enrollment>
+@{
+    ViewData["Title"] = "ViewMyCourses";
+}
+
+<h3>Enrolled courses</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.Indeks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Semester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExamPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeminalPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalPoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinishDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model=>model.ProjectUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model=>model.SeminalUrl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.Indeks)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExamPoints)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeminalPoints)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdditionalPoints)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinishDate)
+                </td>
+                <td>
+                   <a href="@item.ProjectUrl"> @Html.DisplayFor(modelItem => item.ProjectUrl) </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeminalUrl)
+                </td>
+                <td>
+                    <a asp-controller="Student" asp-action="editStudentEnrollment" asp-route-id="@item.Id">Edit enrollment</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+
+

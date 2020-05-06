@@ -1,0 +1,62 @@
+﻿@model IEnumerable<AspNetProekt3.Models.Enrollment>
+@{
+    ViewData["Title"] = "EditEnrollment";
+}
+
+<h3>Enrollments for selected student</h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Title
+            </th>
+            <th>
+               Semester
+            </th>
+            <th>
+               First name
+            </th>
+            <th>
+               Last name
+            </th>
+            <th>
+               Index
+            </th>
+            <th>
+               Year
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.course.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.course.Semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Student.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Student.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Student.Indeks)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Year)
+                </td>
+                <td><a asp-action="insertDate" asp-route-id="@item.Id">Insert finish date</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

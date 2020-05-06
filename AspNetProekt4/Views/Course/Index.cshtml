@@ -1,0 +1,134 @@
+﻿@model IEnumerable<AspNetProekt3.Models.Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+<form asp-controller="Course" asp-action="titleFilter" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Enter title of course: <input type="text" name="title" placeholder="Course title" />
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+
+</form>
+<br />
+
+<form asp-controller="Course" asp-action="semesterFilter" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Enter semester of course: <input type="text" name="semester" placeholder="Course semester" />
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+
+</form>
+<br />
+
+<form asp-controller="Course" asp-action="programmeFilter" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Enter programme of course: <input type="text" name="programme" placeholder="Course programme" />
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+
+</form>
+
+<br />
+
+<form asp-controller="Course" asp-action="teacherFirstFilter" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Enter full name of first teacher: <input type="text" name="fullName" placeholder="Full name" />
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+
+</form>
+
+<br />
+
+<form asp-controller="Course" asp-action="teacherSecondFilter" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Enter full name of second teacher: <input type="text" name="fullName" placeholder="Full name" />
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+
+</form>
+
+<br />
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Credits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Semester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Programme)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EducationLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstTeacher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecondTeacher)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Credits)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Programme)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EducationLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstTeacher.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecondTeacher.FirstName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
