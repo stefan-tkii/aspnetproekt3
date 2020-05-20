@@ -1,0 +1,94 @@
+﻿@model AspNetProekt3.ViewModels.StudentViewModel
+@{
+    ViewData["Title"] = "EditSingleStudent";
+}
+
+<h3>Selected student's profile</h3>
+
+<label>Profile image:</label>
+<br />
+<img width="200" height="200" src="@Model.filePath" alt="Empty image" />
+
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Indeks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnrollmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcquiredCredits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentSemester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EducationLevel)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Indeks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.EnrollmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.AcquiredCredits)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.CurrentSemester)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.EducationLevel)
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+<form enctype="multipart/form-data" asp-controller="DataImage" asp-action="uploadStudent" asp-route-id="@Model.Id" method="post">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Upload image: </label>
+        <div class="col-sm-10">
+            <div class="custom-file">
+                <input type="file" name="uploadedStudent" class="form-control custom-file-input" />
+                <label class="custom-file-label"></label>
+            </div>
+        </div>
+        <br />
+        <input type="submit" value="Save changes" class="btn btn-default" />
+    </div>
+    @section Scripts {
+        <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var filename = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(filename);
+            });
+        });
+        </script>
+    }
+</form>
+

@@ -1,0 +1,75 @@
+﻿@model AspNetProekt3.Models.Enrollment
+@{
+    ViewData["Title"] = "InsertDate";
+}
+
+<h3>Selected enrollment</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Semester
+            </th>
+            <th>
+                First name
+            </th>
+            <th>
+                Last name
+            </th>
+            <th>
+                Index
+            </th>
+            <th>
+                Year
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.course.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.course.Semester)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Student.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Student.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Student.Indeks)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Year)
+            </td>
+            
+        </tr>
+    </tbody>
+    </table>
+
+<br />
+
+<form asp-controller="Student" asp-action="finishDateEdit" method="post">
+    <div class="form-actions no-color">
+        <p>
+            Enter the finish date for the enrollment in format day/month/year: <input type="text" name="finishDate" placeholder="Enrollment's finish date" /> <br />
+
+            Enter ID of enrollment to modify: <input type="text" name="ID" placeholder="Enrollment's ID"/> <br />
+            <input type="submit" value="Insert" class="btn btn-default" />
+        </p>
+    </div>
+</form>
+

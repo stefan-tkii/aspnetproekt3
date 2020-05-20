@@ -1,0 +1,17 @@
+﻿.contents
+{
+    width: 800px;
+}
+
+.table1
+{
+    float: left;
+    width: 390px;
+    border: 1px solid black;
+}
+
+.table2
+{
+    width: 390px;
+    border: 1px solid black;
+}
